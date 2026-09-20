@@ -430,7 +430,32 @@
       .section { padding-top:56px; padding-bottom:56px; }
       section, #admissions, #oleum-guide, .review-gallery figure { scroll-margin-top:80px !important; }
     }
-  </style>
+  
+.education-documents {display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+.document-open {font:inherit;color:var(--ink);border:1px solid var(--ink);border-radius:8px;background:transparent;padding:10px 14px;cursor:pointer;text-align:left;}
+.document-open:hover {background:#ede5f4;}
+.document-open:focus-visible {outline:3px solid var(--violet);outline-offset:3px;}
+.gift-document {background:var(--aqua);border-color:var(--aqua);font-weight:700;}
+.gift-document:hover {background:#78e2da;}
+.document-pages img {display:block;width:100%;height:auto;margin:0 auto 18px;}
+.document-viewer {width:min(1100px,96vw);}
+.document-viewer header {position:static;}
+.document-viewer.zoomed .document-pages img {width:auto;max-width:none;}
+.document-pages {overscroll-behavior:contain;}
+
+.education-documents {display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:14px;align-items:center;max-width:520px;}
+.education-image {display:block;min-width:0;padding:0;border:1px solid var(--line);background:transparent;cursor:zoom-in;}
+.education-image img {display:block;width:100%;height:auto;}
+.education-image:focus-visible {outline:3px solid var(--violet);outline-offset:4px;}
+.application-hint {font-size:15px;line-height:1.5;margin:12px 0 0;}
+
+.material-video .oleum-subtitle {display:block;font-size:1rem;font-weight:400;line-height:1.4;margin-top:6px;}
+.marquee {padding:18px 16px;}
+
+.gift-actions button {font-family:inherit;cursor:pointer;}
+
+.hero-lesson-format {display:block;margin-top:12px;font-weight:400;}
+</style>
 </head>
 <body>
   <header class="site-header">
@@ -452,14 +477,14 @@
         <p class="eyebrow">Химия • обучение • материалы</p>
         <h1 id="hero-title"><span class="hero-name">Лариса</span><span class="hero-patronymic">Александровна</span><span class="hero-surname">Бочарова</span></h1>
         <p class="hero-copy">Репетитор по химии, эксперт ЕГЭ и автор учебных материалов.</p>
-        <p class="hero-preparation"><strong>Подготовка к ОГЭ, ЕГЭ, ДВИ, олимпиадам и поступлению в профильные классы.</strong></p>
+        <p class="hero-preparation"><strong>Подготовка к ОГЭ, ЕГЭ, ДВИ, олимпиадам и поступлению в профильные классы.</strong><span class="hero-lesson-format">Индивидуальные занятия онлайн и офлайн.</span></p>
 <div class="hero-gift" aria-labelledby="gift-title">
           <span class="gift-label">Подарок для подготовки</span>
           <h3 id="gift-title">Все ли темы к экзамену ты знаешь?</h3>
           <p>Забирай в подарок чек-лист подготовки по химии. Отмечай, что уже получается, а что ещё нужно разобрать.</p>
           <div class="gift-actions">
-            <a class="button" href="assets/checklist-ege.pdf" target="_blank" rel="noopener noreferrer">Чек-лист ЕГЭ в подарок</a>
-            <a class="button" href="assets/checklist-oge.pdf" target="_blank" rel="noopener noreferrer">Чек-лист ОГЭ в подарок</a>
+            <button class="button" type="button" data-document="ege">Чек-лист ЕГЭ в подарок</button>
+            <button class="button" type="button" data-document="oge">Чек-лист ОГЭ в подарок</button>
           </div>
         </div>
         
@@ -470,7 +495,7 @@
       </div>
     </section>
 
-    <div class="marquee" aria-hidden="true">Репетитор по химии &nbsp; × &nbsp; Автор учебных материалов &nbsp; × &nbsp; Репетитор по химии</div>
+    <div class="marquee" aria-hidden="true">Репетитор по химии</div>
 
     <section class="section" id="about" aria-labelledby="about-title">
       <div class="section-heading">
@@ -481,12 +506,13 @@
         <div>
           <p class="lead">Меня зовут Лариса Александровна.</p>
           <p>Образование высшее педагогическое, учитель химии и биологии.</p>
-          <p>Эксперт ЕГЭ. Удостоверение 2025 года.</p>
+          <p>Эксперт ЕГЭ.</p>
           <p>Педагогический опыт более 20 лет. Занимаюсь репетиторством с 2008 года.</p>
+<div class="education-documents"><button type="button" class="education-image" data-document="diploma" aria-label="Увеличить диплом с отличием"><img src="assets/diploma.jpg" width="3609" height="4962" loading="lazy" alt="Диплом с отличием, учитель биологии и химии"></button><button type="button" class="education-image" data-document="fipi" aria-label="Увеличить удостоверение ФИПИ"><img src="assets/fipi-certificate.jpg" width="6924" height="4872" loading="lazy" alt="Удостоверение ФИПИ о повышении квалификации по подготовке экспертов ЕГЭ по химии"></button></div>
         </div>
         <div>
           <h3>Результаты моих учеников</h3>
-          <ul><li>100 баллов на ЕГЭ по химии.</li><li>Поступление в МГУ, РХТУ им. Д. И. Менделеева, РУДН и другие вузы, в том числе на бюджет.</li><li>Поступление в СУНЦ.</li></ul><p><a href="#admissions">Посмотреть результаты поступления</a></p>
+          <ul><li>100 баллов на ЕГЭ по химии.</li><li>Поступление в МГУ, РХТУ им. Д. И. Менделеева, РУДН и другие вузы.</li><li>Поступление в СУНЦ.</li></ul><p><a href="#admissions">Посмотреть результаты поступления</a></p>
           <p>Моя задача понять, где мы находимся сейчас, куда хотим прийти и выжать максимум из текущего уровня подготовки.</p>
           <p>Для меня важно заложить хорошую базу знаний, умений и навыков, научить думать и разбираться в сложном. Жизненный путь может сложиться по-разному, но эта база пригодится в любом случае. Когда умеешь мыслить и учиться, легче найти свою дорогу.</p>
           <h3>Немного личного</h3>
@@ -494,8 +520,7 @@
           
         </div>
       </div>
-    <div class="section-contact"><div class="hero-actions"><a class="button" href="https://t.me/loralex211" target="_blank" rel="noopener noreferrer">Написать / записаться в Telegram</a><a class="button" href="https://vk.me/id532537833" target="_blank" rel="noopener noreferrer">Написать / записаться в ВК</a></div></div>
-</section>
+    </section>
     <section class="section" id="approach" aria-labelledby="approach-title">
       <div class="section-heading">
         <span class="number">02 / ЗАНЯТИЯ</span>
@@ -519,7 +544,7 @@
           <p>Заданий много. Они системные, структурированные, объемные.</p>
           <p>Для каждого ученика я готовлю индивидуальный план и подбираю задания из своего большого банка. Сама проверяю домашнюю работу, поэтому всегда вижу, где возникают трудности, и даю задания, чтобы с ними справиться.</p>
           <p>Проверяю не только ход решения и ответ, но и оформление по требованиям экзамена.</p>
-          <p>Таким образом, вы экономите время и получаете мощнейший ресурс при подготовке.</p><p>Отдельно разбираем темы с «подводными камнями»: амфотерность, кислые соли, особые свойства серной и азотной кислот, пероксиды, соединения железа, хрома и марганца. Темы и сложность заданий подбираю под экзамен и уровень ученика.</p><div class="topic-sample"><p class="topic-gift-label">Материал в подарок</p><a href="assets/acid-salts.pdf" target="_blank" rel="noopener noreferrer">Посмотреть задания по кислым солям</a></div>
+          <p>Таким образом, вы экономите время и получаете мощнейший ресурс при подготовке.</p><p>Отдельно разбираем темы с «подводными камнями»: амфотерность, кислые соли, особые свойства серной и азотной кислот, пероксиды, соединения железа, хрома, марганца и другие темы. Темы и сложность заданий подбираю под экзамен и уровень ученика.</p><div class="topic-sample"><p class="topic-gift-label">Материал в подарок</p><button type="button" class="document-open gift-document" data-document="salts">Посмотреть задания по кислым солям</button></div>
           <p class="feedback-paragraph">Даю ученику и родителям обратную связь. Говорю, что уже получается, над чем надо работать, какими конкретными приемами устранить проблему.</p>
         </article>
         <article class="card">
@@ -544,7 +569,7 @@
           <li>Заниматься самостоятельно между нашими встречами на неделе под моим руководством, лучше 2–3 подхода в течение недели.</li>
         </ul>
       </div>
-    <div class="homework-example"><a href="assets/homework-review.pdf" target="_blank" rel="noopener noreferrer" aria-label="Открыть пример проверки домашней работы, PDF"><img src="assets/homework-preview.png" width="637" height="900" loading="lazy" alt="Пример домашней работы с исправлениями и комментариями преподавателя"></a><div><h3>Как я проверяю домашнюю работу</h3><p>Проверяю решение и оформление, отмечаю ошибки и оставляю комментарии.</p><a class="button" href="assets/homework-review.pdf" target="_blank" rel="noopener noreferrer">Посмотреть проверку ДЗ · PDF</a></div></div><div class="section-contact"><div class="hero-actions"><a class="button" href="https://t.me/loralex211" target="_blank" rel="noopener noreferrer">Написать / записаться в Telegram</a><a class="button" href="https://vk.me/id532537833" target="_blank" rel="noopener noreferrer">Написать / записаться в ВК</a></div></div>
+    <div class="homework-example"><a href="assets/homework-review.pdf" target="_blank" rel="noopener noreferrer" aria-label="Открыть пример проверки домашней работы, PDF"><img src="assets/homework-preview.png" width="637" height="900" loading="lazy" alt="Пример домашней работы с исправлениями и комментариями преподавателя"></a><div><h3>Как я проверяю домашнюю работу</h3><p>Проверяю решение и оформление, отмечаю ошибки и оставляю комментарии.</p><a class="button" href="assets/homework-review.pdf" target="_blank" rel="noopener noreferrer">Посмотреть проверку ДЗ · PDF</a></div></div><div class="section-contact"><div class="hero-actions"><a class="button" href="https://t.me/loralex211" target="_blank" rel="noopener noreferrer">Оставить заявку в Telegram</a><a class="button" href="https://vk.me/id532537833" target="_blank" rel="noopener noreferrer">Оставить заявку в ВК</a></div><p class="application-hint">Напишите класс и цель подготовки. Обсудим занятия и ваши вопросы.</p></div>
 </section>
     <section class="section" id="prices" aria-labelledby="prices-title">
       <div class="section-heading"><span class="number">03 / СТОИМОСТЬ</span><h2 id="prices-title">Занятия и цены</h2></div>
@@ -555,7 +580,7 @@
         <div><dt>10–11 классы: ЕГЭ</dt><dd>4 000 ₽</dd></div>
         <div><dt>ДВИ по химии в МГУ</dt><dd>5 000 ₽</dd></div>
         <div><dt>Олимпиады по химии</dt><dd>5 000 ₽</dd></div>
-      </dl><div class="hero-actions section-contact"><a class="button" href="https://t.me/loralex211" target="_blank" rel="noopener noreferrer">Написать / записаться в Telegram</a><a class="button" href="https://vk.me/id532537833" target="_blank" rel="noopener noreferrer">Написать / записаться в ВК</a></div>
+      </dl><div class="hero-actions section-contact"><a class="button" href="https://t.me/loralex211" target="_blank" rel="noopener noreferrer">Оставить заявку в Telegram</a><a class="button" href="https://vk.me/id532537833" target="_blank" rel="noopener noreferrer">Оставить заявку в ВК</a></div><p class="application-hint">Напишите класс и цель подготовки. Обсудим занятия и ваши вопросы.</p>
       <div class="study-expectations">
         <h3>Нужна независимая оценка, мнение со стороны?</h3>
         <p>Предлагаю диагностику.</p>
@@ -571,7 +596,7 @@
           </article>
         </div>
         <p style="margin-top:24px">В обоих вариантах задания выполняются заранее. Видеосозвон длится 20 минут.</p>
-        <div class="hero-actions"><a class="button" href="https://t.me/loralex211" target="_blank" rel="noopener noreferrer">Записаться через Telegram</a><a class="button" href="https://vk.me/id532537833" target="_blank" rel="noopener noreferrer">Записаться через ВК</a></div>
+        <div class="hero-actions"><a class="button" href="https://t.me/loralex211" target="_blank" rel="noopener noreferrer">Оставить заявку в Telegram</a><a class="button" href="https://vk.me/id532537833" target="_blank" rel="noopener noreferrer">Оставить заявку в ВК</a></div><p class="application-hint">Напишите класс и цель подготовки. Обсудим занятия и ваши вопросы.</p>
       </div>
     </section>    <section class="section" id="materials" aria-labelledby="materials-title">
       <div class="section-heading">
@@ -594,7 +619,7 @@
         </div>
         <figure class="material-video" id="oleum-guide">
           <figcaption>
-            <h3>ОЛЕУМ</h3>
+            <h3>ОЛЕУМ<span class="oleum-subtitle">Практическое пособие</span></h3>
             <p class="oleum-title">30 задач от простого к олимпиадному</p>
             <p class="oleum-audience">Для школьников и коллег</p>
           </figcaption>
@@ -626,12 +651,43 @@
   </main>
 
   <footer>© Лариса Александровна</footer>
+  <dialog class="review-dialog document-viewer" id="document-viewer" aria-labelledby="document-title">
+<header><strong id="document-title">Документ</strong><div class="dialog-controls"><button type="button" id="document-zoom" aria-pressed="false">Увеличить</button><button type="button" id="document-close">Закрыть</button></div></header>
+<div class="image-scroll document-pages" id="document-pages"></div>
+<p id="document-download"><a href="assets/acid-salts.pdf" download>Скачать задания в PDF</a></p>
+</dialog>
+<script>
+(() => {
+ const viewer = document.getElementById('document-viewer');
+ const pages = document.getElementById('document-pages');
+ const zoom = document.getElementById('document-zoom');
+ const documents = {
+ ege: {title:'Чек-лист подготовки к ЕГЭ', pdf:'assets/checklist-ege.pdf', files:Array.from({length:7},(_,i)=>'assets/checklist-ege-page-'+(i+1)+'.png')},
+ oge: {title:'Чек-лист подготовки к ОГЭ', pdf:'assets/checklist-oge.pdf', files:Array.from({length:5},(_,i)=>'assets/checklist-oge-page-'+(i+1)+'.png')},
+  diploma: {title:'Диплом с отличием', files:['assets/diploma.jpg']},
+  fipi: {title:'Удостоверение ФИПИ', files:['assets/fipi-certificate.jpg']},
+  salts: {title:'Задания по кислым солям', pdf:'assets/acid-salts.pdf', files:Array.from({length:7},(_,i)=>'assets/acid-salts-page-'+(i+1)+'.png')}
+ };
+ document.querySelectorAll('[data-document]').forEach(button => button.addEventListener('click', () => {
+  const doc = documents[button.dataset.document];
+  document.getElementById('document-title').textContent=doc.title;
+  pages.replaceChildren(...doc.files.map((src,i)=>{const img=document.createElement('img');img.src=src;img.alt=doc.title+' — страница '+(i+1);return img;}));
+  const download = document.getElementById('document-download');
+  download.hidden=!doc.pdf;
+  if(doc.pdf){download.querySelector('a').href=doc.pdf;download.querySelector('a').textContent='Скачать PDF';}
+  viewer.classList.remove('zoomed');zoom.textContent='Увеличить';zoom.setAttribute('aria-pressed','false');
+  viewer.showModal();pages.scrollTop=0;pages.scrollLeft=0;
+ }));
+ document.getElementById('document-close').addEventListener('click',()=>viewer.close());
+ zoom.addEventListener('click',()=>{const active=viewer.classList.toggle('zoomed');zoom.textContent=active?'Вписать в окно':'Увеличить';zoom.setAttribute('aria-pressed',String(active));});
+})();
+</script>
   <dialog class="review-dialog" aria-labelledby="review-dialog-title">
     <header><strong id="review-dialog-title">Отзыв</strong><div class="dialog-controls"><button type="button" id="review-zoom" aria-pressed="false">Увеличить</button><button type="button" id="review-close">Закрыть</button></div></header>
     <div class="image-scroll"><img id="review-full-image" alt=""></div>
   </dialog>
   <script>
-    const reviewDialog = document.querySelector('.review-dialog');
+    const reviewDialog = document.querySelector('.review-dialog:not(.document-viewer)');
     const fullImage = document.getElementById('review-full-image');
     const zoomButton = document.getElementById('review-zoom');
     document.querySelectorAll('.review-image-button').forEach(button => {
