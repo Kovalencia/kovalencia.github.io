@@ -455,6 +455,10 @@
 .gift-actions button {font-family:inherit;cursor:pointer;}
 
 .hero-lesson-format {display:block;margin-top:12px;font-weight:400;}
+
+.homework-view-image {display:block;padding:0;border:0;background:transparent;cursor:zoom-in;}
+.homework-example button.button {font-family:inherit;cursor:pointer;}
+@media(max-width:600px){.homework-example > .homework-view-image{width:min(100%,260px);margin:auto;}}
 </style>
 </head>
 <body>
@@ -569,7 +573,7 @@
           <li>Заниматься самостоятельно между нашими встречами на неделе под моим руководством, лучше 2–3 подхода в течение недели.</li>
         </ul>
       </div>
-    <div class="homework-example"><a href="assets/homework-review.pdf" target="_blank" rel="noopener noreferrer" aria-label="Открыть пример проверки домашней работы, PDF"><img src="assets/homework-preview.png" width="637" height="900" loading="lazy" alt="Пример домашней работы с исправлениями и комментариями преподавателя"></a><div><h3>Как я проверяю домашнюю работу</h3><p>Проверяю решение и оформление, отмечаю ошибки и оставляю комментарии.</p><a class="button" href="assets/homework-review.pdf" target="_blank" rel="noopener noreferrer">Посмотреть проверку ДЗ · PDF</a></div></div><div class="section-contact"><div class="hero-actions"><a class="button" href="https://t.me/loralex211" target="_blank" rel="noopener noreferrer">Оставить заявку в Telegram</a><a class="button" href="https://vk.me/id532537833" target="_blank" rel="noopener noreferrer">Оставить заявку в ВК</a></div><p class="application-hint">Напишите класс и цель подготовки. Обсудим занятия и ваши вопросы.</p></div>
+    <div class="homework-example"><button type="button" class="homework-view-image" data-document="homework" aria-label="Посмотреть проверку домашней работы"><img src="assets/homework-preview.png" width="637" height="900" loading="lazy" alt="Пример домашней работы с исправлениями и комментариями преподавателя"></button><div><h3>Как я проверяю домашнюю работу</h3><p>Проверяю решение и оформление, отмечаю ошибки и оставляю комментарии.</p><button class="button" type="button" data-document="homework">Посмотреть проверку ДЗ</button></div></div><div class="section-contact"><div class="hero-actions"><a class="button" href="https://t.me/loralex211" target="_blank" rel="noopener noreferrer">Оставить заявку в Telegram</a><a class="button" href="https://vk.me/id532537833" target="_blank" rel="noopener noreferrer">Оставить заявку в ВК</a></div><p class="application-hint">Напишите класс и цель подготовки. Обсудим занятия и ваши вопросы.</p></div>
 </section>
     <section class="section" id="prices" aria-labelledby="prices-title">
       <div class="section-heading"><span class="number">03 / СТОИМОСТЬ</span><h2 id="prices-title">Занятия и цены</h2></div>
@@ -662,6 +666,7 @@
  const pages = document.getElementById('document-pages');
  const zoom = document.getElementById('document-zoom');
  const documents = {
+ homework: {title:'Проверка домашней работы', pdf:'assets/homework-review.pdf', files:Array.from({length:5},(_,i)=>'assets/homework-page-'+(i+1)+'.png')},
  ege: {title:'Чек-лист подготовки к ЕГЭ', pdf:'assets/checklist-ege.pdf', files:Array.from({length:7},(_,i)=>'assets/checklist-ege-page-'+(i+1)+'.png')},
  oge: {title:'Чек-лист подготовки к ОГЭ', pdf:'assets/checklist-oge.pdf', files:Array.from({length:5},(_,i)=>'assets/checklist-oge-page-'+(i+1)+'.png')},
   diploma: {title:'Диплом с отличием', files:['assets/diploma.jpg']},
